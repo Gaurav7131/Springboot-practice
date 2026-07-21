@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 //Tells the springboot that we are using restapi on this class
 
 @RestController
-public class User {
+public class StructureUser {
 
     // Maps the HTTP request to this specific method
 
@@ -16,5 +16,4 @@ public class User {
         return "Hii SpringBoot REST , Welcome back  g-AURA-v";
 
     }
-
 }

@@ -11,12 +11,22 @@ import org.springframework.stereotype.Service;
 
 import com.example.firstspringbootex.Entity.Todo;
 
+import jakarta.annotation.PostConstruct;
+
 @Service
 public class TodoService {
 
     // In-memory storage
     private final Map<Long, Todo> todoStore = new ConcurrentHashMap<>();
     private final AtomicLong idGenerator = new AtomicLong(1);
+
+    @PostConstruct
+    public void initData() {
+        Todo initialTodo = new Todo();
+        initialTodo.setTitle("My very first todo!");
+        initialTodo.setCompleted(false);
+        create(initialTodo); // This will automatically be assigned ID 1
+    }
 
     // Get all Todos
     public List<Todo> findAll() {
@@ -31,7 +41,7 @@ public class TodoService {
     // Create a new Todo
     public Todo create(Todo todo) {
         Long newId = idGenerator.getAndIncrement();
-        todo.setid(newId);
+        todo.setId(newId);
         todoStore.put(newId, todo);
         return todo;
     }
@@ -39,7 +49,7 @@ public class TodoService {
     // Update an existing Todo
     public Optional<Todo> update(Long id, Todo updatedTodo) {
         if (todoStore.containsKey(id)) {
-            updatedTodo.setid(id); // Ensure the ID remains the same
+            updatedTodo.setId(id); // Ensure the ID remains the same
             todoStore.put(id, updatedTodo);
             return Optional.of(updatedTodo);
         }
