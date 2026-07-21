@@ -1,4 +1,4 @@
-package com.example.Service;
+package com.example.firstspringbootex.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.stereotype.Service;
 
-import com.example.Entity.Todo;
+import com.example.firstspringbootex.Entity.Todo;
 
 @Service
 public class TodoService {
@@ -39,7 +39,7 @@ public class TodoService {
     // Update an existing Todo
     public Optional<Todo> update(Long id, Todo updatedTodo) {
         if (todoStore.containsKey(id)) {
-            updatedTodo.setid(id);// Ensure the ID remains the same
+            updatedTodo.setid(id); // Ensure the ID remains the same
             todoStore.put(id, updatedTodo);
             return Optional.of(updatedTodo);
         }

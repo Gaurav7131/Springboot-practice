@@ -1,23 +1,22 @@
-package com.example.Entity;
+package com.example.firstspringbootex.Entity;
 
 public class Todo {
     private Long id;
     private String title;
     private boolean completed;
 
-    // constructor
+    // Constructors
     public Todo() {
     }
 
-    // constructor
     public Todo(Long id, String title, boolean completed) {
         this.id = id;
         this.title = title;
         this.completed = completed;
     }
 
-    // getter setter method
-    public Long getId() {
+    // Getters and Setters
+    public Long getid() {
         return id;
     }
 
@@ -25,21 +24,19 @@ public class Todo {
         this.id = id;
     }
 
-    // get and set title of task
-    public String gettitle() {
+    public String getTitle() {
         return title;
     }
 
-    public void settitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public boolean iscompleted() {
+    public boolean isCompleted() {
         return completed;
     }
 
-    public void setcompleted(boolean completed) {
+    public void setCompleted(boolean completed) {
         this.completed = completed;
     }
-
 }
