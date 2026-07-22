@@ -36,4 +36,12 @@ public class UserJsonProcessor {
         }
         return new ValidationSplit(validList, invalidList);
     }
+
+    // Ensure parent direoctory exists and write list as a pretty-json
+    public void writeUsers(List<Users> getvalid, Path output) throws IOException {
+        if (output.getParent() != null) {
+            Files.createDirectories(output.getParent());
+        }
+        mapper.writerWithDefaultPrettyPrinter().writeValue(output.toFile(), getvalid);
+    }
 }

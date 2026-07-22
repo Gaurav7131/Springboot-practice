@@ -41,7 +41,6 @@ public class Users {
     public void setEmail(String email) {
         this.email = email;
     }
-
 }
 
 class ValidationSplit {
@@ -54,7 +53,12 @@ class ValidationSplit {
         this.invalid = invalid;
     }
 
-    public List<Users> getvalid = valid;
-    public List<Users> getinvalid = invalid;
+    public List<Users> getvalid() {
+        return valid;
+    }
+
+    public List<Users> getinvalid() {
+        return invalid;
+    }
 
 }
