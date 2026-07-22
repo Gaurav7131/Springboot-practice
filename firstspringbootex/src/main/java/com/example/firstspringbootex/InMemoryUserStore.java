@@ -37,6 +37,12 @@ public class InMemoryUserStore {
         return newUser;
     }
 
+    // requiremet:findbyId
+    public Optional<User> findById(Long id) {
+        // Returns the user if found, or an empty Optional if not
+        return Optional.empty();
+    }
+
     // Requirement: findByEmail
     public Optional<User> findByEmail(String email) {
         // Returns the user if found, or an empty Optional if not
