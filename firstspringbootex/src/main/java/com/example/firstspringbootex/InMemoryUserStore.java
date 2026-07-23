@@ -7,6 +7,8 @@ import java.util.concurrent.atomic.AtomicLong;
 
 // A simple User record to hold the data
 record User(Long id, String email, String passwordHash) {
+
+    public static User user;
 }
 
 public class InMemoryUserStore {
