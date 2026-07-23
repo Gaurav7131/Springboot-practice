@@ -27,7 +27,7 @@ public class ProfileController {
     @GetMapping("/profile")
     public ResponseEntity<SafeUserResponse> getProfile(
             @RequestHeader(value = "Authorization", required = false) String authHeader) {
-        // Step 1: Check if the header is missing or incorrectly formatted
+        // Step 1: Check if the header is missing or incorrectly formatteds
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
