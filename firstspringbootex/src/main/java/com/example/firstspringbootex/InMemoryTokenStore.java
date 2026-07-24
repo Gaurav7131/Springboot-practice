@@ -5,6 +5,9 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class InMemoryTokenStore {
 
     // Maps the String Token -> to the Long User ID

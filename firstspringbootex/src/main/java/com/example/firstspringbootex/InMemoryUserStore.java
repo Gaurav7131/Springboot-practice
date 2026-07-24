@@ -4,13 +4,13 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
+import org.springframework.stereotype.Service;
 
 // A simple User record to hold the data
 record User(Long id, String email, String passwordHash) {
-
-    public static User user;
 }
 
+@Service
 public class InMemoryUserStore {
 
     // Two maps for fast lookups (One by ID, One by Email)
@@ -42,12 +42,15 @@ public class InMemoryUserStore {
     // requiremet:findbyId
     public Optional<User> findById(Long id) {
         // Returns the user if found, or an empty Optional if not
-        return Optional.empty();
+        return Optional.ofNullable(usersById.get(id));
     }
 
     // Requirement: findByEmail
     public Optional<User> findByEmail(String email) {
         // Returns the user if found, or an empty Optional if not
+        if (email == null) {
+            return Optional.empty();
+        }
         return Optional.ofNullable(usersByEmail.get(email));
     }
 }
