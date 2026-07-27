@@ -7,9 +7,14 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class FirstspringbootexApplication {
-
 	public static void main(String[] args) {
-		SpringApplication.run(FirstspringbootexApplication.class, args);
+		// create appln instance
+		SpringApplication app = new SpringApplication(FirstspringbootexApplication.class);
+
+		// register custom properties
+		app.addInitializers(new ContextApplnEx());
+
+		app.run(args);
 	}
 
 	@Bean
