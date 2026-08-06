@@ -117,7 +117,5 @@ public class CustomFeatureEndpoint {
  * Redis cache. If a user (or IP) exceeds 5 consecutive failed password
  * attempts, temporarily lock the account or block the IP for 15 minutes.
  * 
- * Web Application Firewall (WAF) / Cloudflare: Implement edge-layer protection
- * to detect anomalies, analyze traffic patterns, and automatically challenge or
- * drop malicious bot traffic before it reaches your Spring Boot server.
+ * Web Application Firewall (WAF) / Cloudf
  */
