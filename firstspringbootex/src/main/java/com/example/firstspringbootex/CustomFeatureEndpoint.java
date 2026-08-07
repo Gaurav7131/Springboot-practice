@@ -117,5 +117,4 @@ public class CustomFeatureEndpoint {
  * Redis cache. If a user (or IP) exceeds 5 consecutive failed password
  * attempts, temporarily lock the account or block the IP for 15 minutes.
  * 
- * Web Application Firewall (WAF) / Cloudf
  */
