@@ -52,8 +52,7 @@ public class CustomFeatureEndpoint {
  * 
  * Distributed Denial of Service (DDoS): A variation of a DoS attack where the
  * malicious traffic comes from multiple distributed sources (often a botnet
- * spread globally), making it much harder to block by simply blacklisting a
- * single IP address.
+ * spread globally), making it much harder to blo
  * 
  * Brute Force Attack: A related concept where an attacker repeatedly attempts
  * thousands or millions of combinations of usernames and passwords to guess
