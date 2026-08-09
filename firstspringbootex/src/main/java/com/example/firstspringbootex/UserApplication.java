@@ -40,3 +40,4 @@ public class UserApplication {
     }
 
 }
+//This class output generation data.json and user.json in resources folder 
