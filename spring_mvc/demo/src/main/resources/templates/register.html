@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registration Form</title>
+    <style>.error { color: red; font-size: 0.9em; }</style>
+</head>
+<body>
+    <h2>User Registration</h2>
+
+    <form th:action="@{/register}" th:object="${userForm}" method="post">
+        <div>
+            <label>Username:</label>
+            <input type="text" th:field="*{username}" />
+            <span class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+        </div>
+        <br/>
+        <div>
+            <label>Email:</label>
+            <input type="text" th:field="*{email}" />
+            <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+        </div>
+        <br/>
+        <div>
+            <label>Age:</label>
+            <input type="number" th:field="*{age}" />
+            <span class="error" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+        </div>
+        <br/>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
