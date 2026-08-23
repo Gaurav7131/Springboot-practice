@@ -1,7 +1,6 @@
 package com.example.demo.Controller;
 
 import java.util.Map;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,6 +39,12 @@ public class DemoController {
 
         // automatically maps all incoming query-parameter(multi-value)
         return ResponseEntity.ok(allparam);
+    }
+
+    // for /hello
+    @GetMapping("/hello")
+    public ResponseEntity<String> sayHello(@RequestParam(defaultValue = "Gaurav") String name) {
+        return ResponseEntity.ok("Hello Connections" + name + "Execution Completed:");
     }
 
     // @PathVariable exract the specific resource from Url path structure(fetch)
