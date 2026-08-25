@@ -1,7 +1,7 @@
 package com.example.demo.Controller;
 
 import java.util.Map;
-import org.springframework.stereotype.Controller; // ✅ Use @Controller instead of @RestController
+import org.springframework.stereotype.Controller; // Use @Controller instead of @RestController
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
