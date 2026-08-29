@@ -1,4 +1,4 @@
-package com.example.demo.Config;
+package com.example.demo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,10 +14,11 @@ public class SecurityConfigNew {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(AbstractHttpConfigurer::disable) // Allows POST/PUT/DELETE via Postman without CSRF tokens
+                .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/**").permitAll() // Make your API endpoints public
-                        .anyRequest().authenticated());
+                        .requestMatchers("/api/v1/products/**").permitAll()
+                        .anyRequest().permitAll());
+
         return http.build();
     }
 }

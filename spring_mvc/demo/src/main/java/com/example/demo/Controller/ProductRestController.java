@@ -24,49 +24,50 @@ record Product(Long id, String name, Double price) {
 @RestController
 @RequestMapping("/api/v1/products")
 public class ProductRestController {
+
     private final Map<Long, Product> store = new ConcurrentHashMap<>();
     private final AtomicLong idGenerator = new AtomicLong(1);
 
-    // GET-fetch all products
+    // GET /api/v1/products - Fetch All
     @GetMapping
-    private ResponseEntity<List<Product>> getAllProduct() {
+    public ResponseEntity<List<Product>> getAllProducts() {
         return ResponseEntity.ok(new ArrayList<>(store.values()));
     }
 
-    // GET- fetch one product specific
+    // GET /api/v1/products/{id} - Fetch One
     @GetMapping("/{id}")
-    private ResponseEntity<Product> getProductByid(@PathVariable Long id) {
+    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
         Product product = store.get(id);
-        return (product != null) ? ResponseEntity.ok(product) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return (product != null)
+                ? ResponseEntity.ok(product)
+                : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
+    // POST /api/v1/products - Create Resource
     @PostMapping
-    private ResponseEntity<Product> newProduct(@RequestBody Product p) {
-        Long newId = idGenerator.incrementAndGet();
-        Product createdProduct = new Product(newId, p.name(), p.price());
-        store.put(newId, createdProduct);
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(createdProduct);
-
+    public ResponseEntity<Product> createProduct(@RequestBody Product input) {
+        Long newId = idGenerator.getAndIncrement();
+        Product created = new Product(newId, input.name(), input.price());
+        store.put(newId, created);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
-    // Put-Full Update or Replace
+    // PUT /api/v1/products/{id} - Full Update / Replace
     @PutMapping("/{id}")
-    private ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product p) {
+    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product input) {
         if (!store.containsKey(id)) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-        // Replace Product
-        Product updatedProduct = new Product(id, p.name(), p.price());
-        store.put(id, updatedProduct);
-        return ResponseEntity.ok(updatedProduct);
+        Product updated = new Product(id, input.name(), input.price());
+        store.put(id, updated);
+        return ResponseEntity.ok(updated);
     }
 
-    // Delete
+    // DELETE /api/v1/products/{id} - Remove Resource
     @DeleteMapping("/{id}")
-    private ResponseEntity<Product> deleteProduct(@PathVariable Long id) {
-        return (store.remove(id) != null) ? ResponseEntity.noContent().build()
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+        return (store.remove(id) != null)
+                ? ResponseEntity.noContent().build()
                 : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-
     }
-
 }

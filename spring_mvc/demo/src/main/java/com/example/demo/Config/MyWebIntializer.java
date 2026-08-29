@@ -1,5 +1,5 @@
 //Purpose"Eliminate the use of web.xml(deployment file descpt.) by registering DispatcherServletInitializer
-package com.example.demo.Config;
+package com.example.demo.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

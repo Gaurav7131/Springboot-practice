@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 import com.example.demo.service.productService;
 
-@SpringBootApplication
+@SpringBootApplication // (exclude = { SecurityAutoConfiguration.class })
 @ComponentScan(basePackages = "com.example.demo")
 public class DemoApplication {
 

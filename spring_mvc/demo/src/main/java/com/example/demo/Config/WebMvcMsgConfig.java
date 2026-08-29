@@ -1,4 +1,4 @@
-package com.example.demo.Config;
+package com.example.demo.config;
 
 import java.time.Duration;
 import java.util.Locale;
